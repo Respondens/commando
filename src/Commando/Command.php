@@ -839,6 +839,7 @@ class Command implements \ArrayAccess, \Iterator
      * @see \ArrayAccess
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->options[$offset]);
@@ -850,6 +851,7 @@ class Command implements \ArrayAccess, \Iterator
      * @see \ArrayAccess
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         // Support implicit/lazy parsing
@@ -866,6 +868,7 @@ class Command implements \ArrayAccess, \Iterator
      * @throws \Exception
      * @see \ArrayAccess
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         throw new \Exception('Setting an option value via array syntax is not permitted');
@@ -875,6 +878,7 @@ class Command implements \ArrayAccess, \Iterator
      * @param string $offset
      * @see \ArrayAccess
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         $this->options[$offset]->setValue(null);
@@ -883,6 +887,7 @@ class Command implements \ArrayAccess, \Iterator
     /**
      * @see \Iterator
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->position = 0;
@@ -892,6 +897,7 @@ class Command implements \ArrayAccess, \Iterator
      * @return mixed value of current option
      * @see \Iterator
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->options[$this->sorted_keys[$this->position]]->getValue();
@@ -901,6 +907,7 @@ class Command implements \ArrayAccess, \Iterator
      * @return int
      * @see \Iterator
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
@@ -909,6 +916,7 @@ class Command implements \ArrayAccess, \Iterator
     /**
      * @see \Iterator
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         ++$this->position;
@@ -918,6 +926,7 @@ class Command implements \ArrayAccess, \Iterator
      * @return bool
      * @see \Iterator
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return isset($this->sorted_keys[$this->position]);
